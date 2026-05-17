@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { inview } from '$lib/inview';
+	import { pic } from '$lib/img';
 	import { company } from '$data/site';
 	import Seo from '$components/seo.svelte';
 	import SunField from '$components/sun-field.svelte';
@@ -74,11 +75,12 @@
 			data-reveal="clip"
 			{@attach inview()}
 		>
-			<img
-				src="/projects/agro-ricemill/hero.jpeg"
+			<enhanced:img
+				src={pic('/projects/agro-ricemill/hero.jpeg')}
 				alt="A True East solar installation at golden hour, Oriental Mindoro"
 				loading="lazy"
 				decoding="async"
+				sizes="(min-width: 1024px) 50vw, 100vw"
 				class="size-full object-cover"
 			/>
 		</div>
@@ -105,11 +107,12 @@
 
 <section class="isolate relative overflow-hidden text-on-night">
 	<div class="-z-10 absolute inset-0" aria-hidden="true">
-		<img
-			src="/projects/agro-ricemill/2.jpeg"
+		<enhanced:img
+			src={pic('/projects/agro-ricemill/2.jpeg')}
 			alt=""
 			loading="lazy"
 			decoding="async"
+			sizes="100vw"
 			class="size-full object-cover"
 		/>
 		<div

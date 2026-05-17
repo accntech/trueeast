@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { inview } from '$lib/inview';
+	import { pic } from '$lib/img';
 
 	interface Props {
 		eyebrow?: string;
@@ -15,11 +16,12 @@
 
 <section class="relative isolate overflow-hidden bg-night text-on-night">
 	<div class="absolute inset-0 -z-10" aria-hidden="true">
-		<img
-			src="/projects/agro-ricemill/2.jpeg"
+		<enhanced:img
+			src={pic('/projects/agro-ricemill/2.jpeg')}
 			alt=""
 			loading="lazy"
 			decoding="async"
+			sizes="100vw"
 			class="size-full object-cover grayscale-[0.2]"
 		/>
 		<div

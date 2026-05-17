@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { inview } from '$lib/inview';
+	import { pic } from '$lib/img';
 	import { stats } from '$data/site';
 	import { services, process } from '$data/services';
 	import { featured } from '$data/projects';
@@ -29,11 +30,12 @@
 <!-- ───────── hero ───────── -->
 <section class="isolate relative flex flex-col justify-end pb-8 min-h-svh text-on-night">
 	<div class="-z-10 absolute inset-0 overflow-hidden">
-		<img
-			src="/projects/agro-ricemill/hero.jpeg"
+		<enhanced:img
+			src={pic('/projects/agro-ricemill/hero.jpeg')}
 			alt="Aerial view of the 350 kWp rooftop solar array on the VM Agbayani Ricemill, Oriental Mindoro"
 			fetchpriority="high"
 			decoding="async"
+			sizes="100vw"
 			class="size-full object-cover animate-kenburns"
 		/>
 		<div
@@ -152,11 +154,12 @@
 					{@attach inview()}
 				>
 					<div class="aspect-16/10 overflow-hidden">
-						<img
-							src={s.image}
+						<enhanced:img
+							src={pic(s.image)}
 							alt=""
 							loading="lazy"
 							decoding="async"
+							sizes="(min-width: 1024px) 50vw, 100vw"
 							class="size-full object-cover scale-[1.02] group-hover:scale-[1.07] transition-transform duration-900 ease-out"
 						/>
 					</div>

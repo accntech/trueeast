@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { inview } from '$lib/inview';
+	import { pic } from '$lib/img';
 	import { services, process, advantages } from '$data/services';
 	import Seo from '$components/seo.svelte';
 	import SunField from '$components/sun-field.svelte';
@@ -38,11 +39,12 @@
 				data-reveal="clip"
 				{@attach inview()}
 			>
-				<img
-					src={s.image}
+				<enhanced:img
+					src={pic(s.image)}
 					alt="{s.name} by True East Energy"
 					loading="lazy"
 					decoding="async"
+					sizes="(min-width: 1024px) 50vw, 100vw"
 					class="size-full object-cover"
 				/>
 				<span

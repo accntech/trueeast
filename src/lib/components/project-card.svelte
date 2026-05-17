@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pic } from '$lib/img';
 	import { cover, type Project } from '$data/projects';
 
 	interface Props {
@@ -22,11 +23,12 @@
 			feature ? 'aspect-16/11' : 'aspect-4/3'
 		]}
 	>
-		<img
-			src={img}
+		<enhanced:img
+			src={pic(img)}
 			alt="{project.name} — {cap} solar installation in {project.location}"
 			loading="lazy"
 			decoding="async"
+			sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
 			class="absolute inset-0 size-full object-cover scale-[1.01] group-hover:scale-[1.06] transition-transform duration-900 ease-out"
 		/>
 		<div
