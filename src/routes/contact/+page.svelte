@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { company } from '$data/site';
+	import { buildEnquiry, sendEnquiry } from '$lib/contact';
 	import Seo from '$components/seo.svelte';
 	import SunField from '$components/sun-field.svelte';
 	import Select from '$components/select.svelte';
@@ -9,7 +10,8 @@
 	let phone = $state('');
 	let kind = $state('Not sure yet');
 	let message = $state('');
-	let sent = $state(false);
+	let botcheck = $state(false);
+	let status = $state<'idle' | 'submitting' | 'sent' | 'error'>('idle');
 
 	const kinds = [
 		'On-Grid system',
@@ -21,8 +23,7 @@
 		`${company.office.line1}, ${company.office.line2}, ${company.office.city}, ${company.office.province}, ${company.office.country}`
 	)}`;
 
-	function submit(e: SubmitEvent) {
-		e.preventDefault();
+	const mailtoHref = $derived.by(() => {
 		const subject = `Solar enquiry — ${kind} — ${name || 'Website'}`;
 		const body = [
 			`Name: ${name}`,
@@ -32,10 +33,28 @@
 			'',
 			message
 		].join('\n');
-		window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(
+		return `mailto:${company.email}?subject=${encodeURIComponent(
 			subject
 		)}&body=${encodeURIComponent(body)}`;
-		sent = true;
+	});
+
+	function resetForm() {
+		name = '';
+		email = '';
+		phone = '';
+		kind = 'Not sure yet';
+		message = '';
+		botcheck = false;
+		status = 'idle';
+	}
+
+	async function submit(e: SubmitEvent) {
+		e.preventDefault();
+		if (status === 'submitting') return;
+		status = 'submitting';
+		const payload = buildEnquiry({ name, email, phone, kind, message, botcheck });
+		const { ok } = await sendEnquiry(payload);
+		status = ok ? 'sent' : 'error';
 	}
 
 	const fieldCls =
@@ -68,24 +87,40 @@
 		class="gap-[clamp(2.5rem,6vw,5rem)] grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] wrap"
 	>
 		<div class="pt-12 border-line border-t">
-			{#if sent}
+			<p class="sr-only" role="status" aria-live="polite">
+				{#if status === 'sent'}Your enquiry has been sent.{/if}
+			</p>
+			{#if status === 'sent'}
 				<div class="flex flex-col justify-center min-h-96">
-					<span class="eyebrow">Almost there</span>
-					<h2 class="mt-[1.2rem] text-d-sm uppercase">Your email is ready</h2>
+					<span class="eyebrow">Message sent</span>
+					<h2 class="mt-[1.2rem] text-d-sm uppercase">Thank you &mdash; we&rsquo;ve got it</h2>
 					<p class="mt-6 max-w-[44ch] text-ink-soft text-lg">
-						We&rsquo;ve opened a pre-filled message in your email app addressed to
+						Your enquiry has been sent to
 						<a class="text-ink decoration-2 decoration-amber underline underline-offset-4" href="mailto:{company.email}">{company.email}</a>.
-						Hit send and we&rsquo;ll be in touch shortly.
+						The engineer who designs your system reads every enquiry &mdash; we&rsquo;ll be in touch shortly.
 					</p>
 					<button
-						onclick={() => (sent = false)}
+						type="button"
+						onclick={resetForm}
 						class="mt-8 text-ink tlink"
 					>
-						Edit the form again
+						Send another enquiry
 					</button>
 				</div>
 			{:else}
 				<form onsubmit={submit} class="gap-7 grid">
+					<div aria-hidden="true" class="sr-only">
+						<label>
+							Leave this field empty
+							<input
+								type="checkbox"
+								bind:checked={botcheck}
+								name="botcheck"
+								tabindex="-1"
+								autocomplete="off"
+							/>
+						</label>
+					</div>
 					<div class="gap-7 grid grid-cols-1 sm:grid-cols-2">
 						<label class="block">
 							<span class={labelCls}>Name</span>
@@ -118,15 +153,29 @@
 							placeholder="Roof type, floor area, monthly bill, location…"
 						></textarea>
 					</label>
-					<button type="submit" class="justify-center w-full sm:w-fit btn">
-						Send enquiry
+					{#if status === 'error'}
+						<p
+							role="alert"
+							class="rounded-md border border-line-strong bg-paper-2 px-4 py-3 text-ink-soft text-sm"
+						>
+							We couldn&rsquo;t send your enquiry just now. Please try again, or email us
+							directly at
+							<a class="text-ink decoration-2 decoration-amber underline underline-offset-4" href={mailtoHref}>{company.email}</a>.
+						</p>
+					{/if}
+					<button
+						type="submit"
+						class="justify-center w-full sm:w-fit btn"
+						disabled={status === 'submitting'}
+						aria-busy={status === 'submitting'}
+					>
+						{status === 'submitting' ? 'Sending…' : 'Send enquiry'}
 						<svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true">
 							<path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" fill="none" />
 						</svg>
 					</button>
 					<p class="text-ink-faint text-sm">
-						This opens your email app with the details pre-filled — nothing is sent until you
-						press send there.
+						Your details go straight to our engineering team &mdash; we never share them.
 					</p>
 				</form>
 			{/if}
