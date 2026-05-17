@@ -1,0 +1,477 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/big-shoulders/wght.css';
+@import '@fontsource-variable/hanken-grotesk/wght.css';
+
+/*  TRUE EAST ENERGY — sun-bleached solar editorial system on Tailwind v4.
+    Light theme by intent. OKLCH throughout, neutrals tinted to solar amber. */
+
+@theme {
+	/* surfaces — aged sun-bleached newsprint */
+	--color-paper: oklch(0.964 0.014 82);
+	--color-paper-2: oklch(0.945 0.018 78);
+	--color-surface: oklch(0.99 0.007 85);
+	--color-night: oklch(0.226 0.027 152);
+	--color-night-2: oklch(0.178 0.022 152);
+
+	/* ink — deep panel green-black, never pure */
+	--color-ink: oklch(0.243 0.024 150);
+	--color-ink-soft: oklch(0.424 0.022 138);
+	--color-ink-faint: oklch(0.566 0.02 120);
+	--color-on-night: oklch(0.93 0.014 84);
+	--color-on-night-soft: oklch(0.74 0.018 96);
+
+	/* hairlines */
+	--color-line: oklch(0.876 0.016 82);
+	--color-line-strong: oklch(0.79 0.02 80);
+	--color-line-night: oklch(0.36 0.026 150);
+
+	/* solar accents — the rare 10% */
+	--color-amber: oklch(0.756 0.162 64);
+	--color-amber-deep: oklch(0.642 0.158 52);
+	--color-amber-glow: oklch(0.83 0.13 76);
+	--color-green: oklch(0.52 0.118 152);
+	--color-green-deep: oklch(0.345 0.078 150);
+
+	/* type — Big Shoulders carries display, Hanken the body */
+	--font-display: 'Big Shoulders Variable', 'Arial Narrow', system-ui, sans-serif;
+	--font-body: 'Hanken Grotesk Variable', system-ui, -apple-system, sans-serif;
+	--font-sans: 'Hanken Grotesk Variable', system-ui, -apple-system, sans-serif;
+
+	--text-base: clamp(1rem, 0.965rem + 0.18vw, 1.075rem);
+	--text-lg: clamp(1.12rem, 1.03rem + 0.42vw, 1.35rem);
+	--text-xl: clamp(1.4rem, 1.18rem + 1.05vw, 2rem);
+	--text-d-sm: clamp(2rem, 1.5rem + 2.4vw, 3.1rem);
+	--text-d-md: clamp(2.9rem, 1.9rem + 4.8vw, 5.4rem);
+	--text-d-lg: clamp(3.6rem, 1.9rem + 8.2vw, 8.4rem);
+	--text-d-xl: clamp(3rem, 1rem + 7vw, 6.5rem);
+
+	--radius-sm: 2px;
+	--radius-md: 5px;
+
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+	--ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+	--breakpoint-nav: 55rem;
+
+	--animate-load: load-in 0.85s var(--ease-out) forwards;
+	--animate-kenburns: kenburns 22s var(--ease-in-out) infinite alternate;
+	--animate-scrollcue: scrollcue 2.4s var(--ease-in-out) infinite;
+}
+
+@keyframes load-in {
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes kenburns {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.045);
+	}
+}
+@keyframes scrollcue {
+	0% {
+		transform: translateX(-100%);
+	}
+	60%,
+	100% {
+		transform: translateX(260%);
+	}
+}
+@keyframes menu-in {
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		tab-size: 4;
+	}
+
+	body {
+		min-height: 100dvh;
+		background: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-body);
+		font-size: var(--text-base);
+		font-weight: 420;
+		line-height: 1.62;
+		font-feature-settings: 'ss01', 'cv05';
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		overflow-x: clip;
+	}
+
+	/* faint sun-bleached grain + a single warm light source, fixed */
+	body::before {
+		content: '';
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		background:
+			radial-gradient(120% 80% at 84% -10%, oklch(0.85 0.13 76 / 0.18), transparent 60%),
+			radial-gradient(90% 70% at 6% 108%, oklch(0.52 0.118 152 / 0.07), transparent 55%);
+	}
+
+	body::after {
+		content: '';
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		opacity: 0.5;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+	}
+
+	body > div {
+		position: relative;
+		z-index: 1;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 0.94;
+		letter-spacing: -0.01em;
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	address {
+		font-style: normal;
+	}
+
+	::selection {
+		background: var(--color-amber);
+		color: oklch(0.2 0.02 150);
+	}
+
+	/* Fallback ring for anything not individually styled (inline prose links,
+	   etc). Interactive primitives below replace this with the tinted
+	   border-swap + halo pattern. */
+	:focus-visible {
+		outline: 2px solid var(--color-amber-deep);
+		outline-offset: 3px;
+		border-radius: 1px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+}
+
+/* ───────── reusable primitives (composed with Tailwind utilities) ───────── */
+
+.wrap {
+	width: min(100% - 2.5rem, 78rem);
+	margin-inline: auto;
+}
+
+.wrap-narrow {
+	width: min(100% - 2.5rem, 52rem);
+	margin-inline: auto;
+}
+
+.section-y {
+	padding-block: clamp(4rem, 2.5rem + 7vw, 9rem);
+}
+
+.eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6em;
+	font-family: var(--font-display);
+	font-size: clamp(0.8rem, 0.74rem + 0.2vw, 0.95rem);
+	font-weight: 600;
+	letter-spacing: 0.26em;
+	text-transform: uppercase;
+	color: var(--color-ink-soft);
+}
+
+.eyebrow::before {
+	content: '';
+	width: 1.6rem;
+	height: 2px;
+	background: var(--color-amber);
+	flex: none;
+}
+
+.eyebrow-night {
+	color: var(--color-on-night-soft);
+}
+
+.lede {
+	font-size: var(--text-lg);
+	line-height: 1.5;
+	color: var(--color-ink-soft);
+	max-width: 64ch;
+	text-wrap: pretty;
+}
+
+/* the signature: a horizon hairline with sunrise bleeding up from it */
+.rule-sunrise {
+	position: relative;
+	height: 1px;
+	border: 0;
+	background: var(--color-line-strong);
+}
+
+.rule-sunrise::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: min(40%, 16rem);
+	height: 3px;
+	background: linear-gradient(90deg, var(--color-amber), var(--color-amber-glow) 55%, transparent);
+}
+
+.btn {
+	--_bg: var(--color-amber);
+	--_fg: oklch(0.22 0.02 150);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.7em;
+	padding: 0.95rem 1.6rem;
+	font-family: var(--font-display);
+	font-size: 1.05rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	background: var(--_bg);
+	color: var(--_fg);
+	border: 1px solid transparent;
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	transition:
+		transform 140ms var(--ease-out),
+		background-color 220ms var(--ease-out),
+		color 220ms var(--ease-out),
+		border-color 220ms var(--ease-out),
+		box-shadow 220ms var(--ease-out);
+}
+
+.btn svg {
+	transition: transform 220ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.btn:hover {
+		--_bg: var(--color-amber-deep);
+		--_fg: oklch(0.97 0.01 85);
+	}
+	.btn:hover svg {
+		transform: translateX(0.22rem);
+	}
+}
+
+.btn:active {
+	transform: scale(0.975);
+}
+
+/* Pattern 3 — solid accent bg: no border swap, bumped 35% halo. */
+.btn:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-amber-deep) 35%, transparent);
+}
+
+.btn-ghost {
+	--_bg: transparent;
+	--_fg: var(--color-ink);
+	border-color: var(--color-line-strong);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.btn-ghost:hover {
+		--_bg: var(--color-ink);
+		--_fg: var(--color-paper);
+		border-color: var(--color-ink);
+	}
+}
+
+.btn-on-night {
+	--_fg: oklch(0.18 0.02 150);
+}
+
+.btn-ghost.btn-on-night {
+	--_bg: transparent;
+	--_fg: var(--color-on-night);
+	border-color: var(--color-line-night);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.btn-ghost.btn-on-night:hover {
+		--_bg: var(--color-on-night);
+		--_fg: var(--color-night);
+		border-color: var(--color-on-night);
+	}
+}
+
+/* Pattern 1 — resting border: swap to a tinted border + 18% halo.
+   Overrides .btn:focus-visible above (equal specificity, later in source). */
+.btn-ghost:focus-visible {
+	outline: none;
+	border-color: color-mix(in oklch, var(--color-amber-deep) 60%, var(--color-line-strong));
+	box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-amber-deep) 18%, transparent);
+}
+
+/* Same on dark sections: bump border + halo so it reads on the green-black. */
+.btn-ghost.btn-on-night:focus-visible {
+	border-color: color-mix(in oklch, var(--color-amber-deep) 70%, var(--color-line-night));
+	box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-amber-deep) 26%, transparent);
+}
+
+.tlink {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	font-family: var(--font-display);
+	font-weight: 600;
+	font-size: 1.05rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding-bottom: 0.25rem;
+	width: fit-content;
+	/* Pattern 2 — no resting border: reserve the 1px slot so focus
+	   doesn't shift the link. */
+	border: 1px solid transparent;
+	transition:
+		border-color 220ms var(--ease-out),
+		box-shadow 220ms var(--ease-out);
+}
+
+.tlink::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background: var(--color-amber);
+	transform-origin: left;
+	transform: scaleX(0.32);
+	transition: transform 220ms var(--ease-out);
+}
+
+.tlink svg {
+	transition: transform 220ms var(--ease-out);
+}
+
+.tlink:focus-visible {
+	outline: none;
+	border-color: color-mix(in oklch, var(--color-amber-deep) 60%, var(--color-line-strong));
+	box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-amber-deep) 18%, transparent);
+}
+
+/* Keyboard focus gets the same underline affordance as hover. */
+.tlink:focus-visible::after {
+	transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.tlink:hover::after {
+		transform: scaleX(1);
+	}
+	.tlink:hover svg {
+		transform: translateX(0.22rem);
+	}
+}
+
+.tabular {
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: 'tnum';
+}
+
+.skip-link {
+	position: fixed;
+	top: 0.75rem;
+	left: 0.75rem;
+	z-index: 200;
+	padding: 0.75rem 1.1rem;
+	background: var(--color-ink);
+	color: var(--color-paper);
+	font-family: var(--font-display);
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	border-radius: var(--radius-sm);
+	transform: translateY(-150%);
+	transition:
+		transform 220ms var(--ease-out),
+		box-shadow 220ms var(--ease-out);
+}
+
+/* Pattern 3 — solid (ink) bg: no border swap, bumped 35% halo. */
+.skip-link:focus {
+	transform: translateY(0);
+	outline: none;
+	box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-amber-deep) 35%, transparent);
+}
+
+/* ───────── scroll reveal (progressive enhancement, scoped to html.js) ───────── */
+
+.js [data-reveal] {
+	opacity: 0;
+	transform: translateY(1.4rem);
+	transition:
+		opacity 0.7s var(--ease-out),
+		transform 0.7s var(--ease-out);
+}
+
+/* The clip variant must NOT clip the observed element itself: a collapsed
+   clip-path zeroes its IntersectionObserver rect, so the observer that
+   reveals it can never fire. Keep the wrapper's box intact (opacity 1,
+   no transform) and wipe its child upward behind an overflow mask. */
+.js [data-reveal='clip'] {
+	opacity: 1;
+	transform: none;
+	overflow: hidden;
+}
+
+.js [data-reveal='clip'] > * {
+	transform: translateY(101%);
+	transition: transform 0.85s var(--ease-out);
+}
+
+[data-revealed] {
+	opacity: 1 !important;
+	transform: none !important;
+}
+
+[data-revealed][data-reveal='clip'] > * {
+	transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.js [data-reveal],
+	.js [data-reveal='clip'] > * {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
