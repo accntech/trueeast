@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://trueeastenergy.ph/sitemap.xml
+Sitemap: https://trueeastenergy.com/sitemap.xml

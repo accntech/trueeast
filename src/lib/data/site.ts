@@ -55,4 +55,4 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const ORIGIN = "https://trueeastenergy.ph";
+export const ORIGIN = "https://trueeastenergy.com";
