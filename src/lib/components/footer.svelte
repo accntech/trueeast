@@ -88,5 +88,18 @@
 			<span>&copy; {year} {company.name}</span>
 			<span>Bongabong · Oriental Mindoro · Philippines</span>
 		</div>
+
+		<p class="mt-1 text-on-night-soft/60 text-xs">
+			Powered by
+			<a
+				href="https://accountech.dev"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="group inline font-bold text-on-night/80 hover:text-on-night transition-colors"
+				>accoun<span class="text-teal-400 group-hover:text-teal-300 transition-colors">tech</span><span
+					class="text-teal-400">.</span
+				></a
+			>
+		</p>
 	</div>
 </footer>
