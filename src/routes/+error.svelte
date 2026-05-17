@@ -15,7 +15,7 @@
 
 <Seo
 	title={notFound ? 'Page not found' : 'Something went wrong'}
-	description="The page could not be found. Return to True East Energy Corp. — engineer-led solar in Oriental Mindoro."
+	description="The page could not be found. Return to True East Energy Corp., engineer-led solar in Oriental Mindoro."
 	noindex
 />
 

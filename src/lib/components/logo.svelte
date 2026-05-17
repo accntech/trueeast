@@ -44,7 +44,7 @@
 	<a
 		{href}
 		class="inline-flex rounded-sm border border-transparent outline-none transition-[border-color,box-shadow] focus-visible:border-[color-mix(in_oklch,var(--color-amber-deep)_60%,var(--color-line-strong))] focus-visible:shadow-[0_0_0_3px_color-mix(in_oklch,var(--color-amber-deep)_18%,transparent)]"
-		aria-label="True East Energy Corp. — home"
+		aria-label="True East Energy Corp., home"
 	>
 		{@render lockup()}
 	</a>

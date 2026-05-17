@@ -1,4 +1,4 @@
-/* Single source of truth — every figure here is drawn from the official
+/* Single source of truth. Every figure here is drawn from the official
    TRUE EAST ENERGY CORP. company profile. Nothing is invented. */
 
 export const company = {
@@ -7,7 +7,7 @@ export const company = {
   tagline: "Power that rises in the East.",
   sec: "202406015446-02",
   founded: 2024,
-  type: "Stock Corporation — power generation, transmission & distribution",
+  type: "Stock Corporation: power generation, transmission & distribution",
   philgeps: true,
   leader: {
     name: "Engr. Vincent Vir M. Agbayani",

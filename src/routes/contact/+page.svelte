@@ -24,7 +24,7 @@
 	)}`;
 
 	const mailtoHref = $derived.by(() => {
-		const subject = `Solar enquiry — ${kind} — ${name || 'Website'}`;
+		const subject = `Solar enquiry: ${kind} (${name || 'Website'})`;
 		const body = [
 			`Name: ${name}`,
 			`Email: ${email}`,
@@ -65,7 +65,7 @@
 
 <Seo
 	title="Contact"
-	description="Talk to True East Energy Corp. — engineer-led solar in Bongabong, Oriental Mindoro. Request a turn-key On-Grid or Hybrid proposal."
+	description="Talk to True East Energy Corp., engineer-led solar in Bongabong, Oriental Mindoro. Request a turn-key On-Grid or Hybrid proposal."
 	image="/og/contact.jpg"
 />
 

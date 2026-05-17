@@ -9,7 +9,7 @@
 
 <Seo
 	title="Services"
-	description="On-Grid and Hybrid solar with battery storage — delivered as a true turn-key package: engineering, design, procurement, installation and after-sales support."
+	description="On-Grid and Hybrid solar with battery storage, delivered as a true turn-key package: engineering, design, procurement, installation and after-sales support."
 	image="/og/services.jpg"
 />
 
@@ -21,8 +21,8 @@
 			Solar, sized to<br />your building.
 		</h1>
 		<p class="mt-8 max-w-[42ch] text-ink-soft text-xl">
-			Two systems, one engineering standard. We model the array to your structure and your load —
-			never to a catalogue — and carry it from first site visit to after-sales support.
+			Two systems, one engineering standard. We model the array to your structure and your load,
+			never to a catalogue, and carry it from first site visit to after-sales support.
 		</p>
 	</div>
 </header>
@@ -54,7 +54,7 @@
 				</span>
 			</div>
 			<div data-reveal {@attach inview()}>
-				<span class="eyebrow">{s.index} — {s.bestFor}</span>
+				<span class="eyebrow">{s.index} · {s.bestFor}</span>
 				<h2 class="mt-[1.2rem] text-d-sm uppercase">{s.name}</h2>
 				<p class="mt-[1.4rem] max-w-[52ch] text-ink-soft text-lg">{s.body}</p>
 				<ul class="gap-[0.9rem] grid mt-8 mb-[2.4rem]">

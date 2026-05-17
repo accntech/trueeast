@@ -14,12 +14,12 @@
 		title,
 		description,
 		image = '/og/home.jpg',
-		imageAlt = 'True East Energy Corp. — engineer-led solar in Oriental Mindoro',
+		imageAlt = 'True East Energy Corp., engineer-led solar in Oriental Mindoro',
 		ogType = 'website',
 		noindex = false
 	}: Props = $props();
 
-	let full = $derived(`${title} — ${company.name}`);
+	let full = $derived(`${title} | ${company.name}`);
 	let url = $derived(`${ORIGIN}${page.url.pathname}`);
 	let img = $derived(`${ORIGIN}${image}`);
 
@@ -49,7 +49,7 @@
 				logo: `${ORIGIN}/favicon.svg`,
 				image: `${ORIGIN}/og/home.jpg`,
 				description:
-					'Engineer-led turn-key On-Grid and Hybrid solar in Bongabong, Oriental Mindoro — 550+ kWp commissioned across 17 installations.',
+					'Engineer-led turn-key On-Grid and Hybrid solar in Bongabong, Oriental Mindoro. 550+ kWp commissioned across 17 installations.',
 				foundingDate: String(company.founded),
 				email: company.email,
 				telephone: company.phone,

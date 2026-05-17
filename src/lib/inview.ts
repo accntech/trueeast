@@ -15,7 +15,7 @@ export function inview(options: { once?: boolean } = {}): Attachment<HTMLElement
 			(entries) => {
 				for (const entry of entries) {
 					// Reveal when in view, or when already scrolled past (anchor
-					// jumps, End key, refresh scroll-restoration land mid-page —
+					// jumps, End key, refresh scroll-restoration land mid-page;
 					// content above the viewport must not stay hidden).
 					if (entry.isIntersecting || entry.boundingClientRect.bottom <= 0) {
 						node.setAttribute('data-revealed', '');

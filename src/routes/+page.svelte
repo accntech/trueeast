@@ -23,7 +23,7 @@
 
 <Seo
 	title="Solar power, engineered"
-	description="True East Energy Corp. — engineer-led turn-key On-Grid and Hybrid solar across Oriental Mindoro. 550+ kWp commissioned, from rice mills to hospitals."
+	description="True East Energy Corp. delivers engineer-led turn-key On-Grid and Hybrid solar across Oriental Mindoro. 550+ kWp commissioned, from rice mills to hospitals."
 	image="/og/home.jpg"
 />
 
@@ -58,7 +58,7 @@
 			<span class="{loadCls} block text-amber" style="--d:290ms">the East</span>
 		</h1>
 		<p class="{loadCls} mt-6 max-w-[52ch] text-lg text-on-night-soft" style="--d:430ms">
-			Engineer-led, turn-key solar — designed, built and supported by a Registered Electrical
+			Engineer-led, turn-key solar designed, built and supported by a Registered Electrical
 			Engineer. From the rice mill that started it all to hospitals running on sunlight.
 		</p>
 		<div class="{loadCls} mt-8 flex flex-wrap gap-4" style="--d:560ms">
@@ -104,8 +104,8 @@
 		</div>
 		<div class="pt-[0.6rem]" data-reveal {@attach inview()}>
 			<p class="text-ink-soft text-lg">
-				We deliver a genuine turn-key package — engineering, design, procurement, installation
-				and after-sales support — under one accountable roof, led by
+				We deliver a genuine turn-key package: engineering, design, procurement, installation
+				and after-sales support, all under one accountable roof, led by
 				<strong class="font-semibold text-ink">Engr. Vincent Vir M. Agbayani</strong>,
 				Registered Electrical Engineer with 14 years of plant experience.
 			</p>

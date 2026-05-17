@@ -25,7 +25,7 @@
 	>
 		<enhanced:img
 			src={pic(img)}
-			alt="{project.name} — {cap} solar installation in {project.location}"
+			alt="{project.name}, a {cap} solar installation in {project.location}"
 			loading="lazy"
 			decoding="async"
 			sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"

@@ -40,7 +40,7 @@ export const projects: Project[] = [
 		capacityKwp: 350,
 		folder: 'agro-ricemill',
 		photos: 2,
-		note: 'The 350 kWp rooftop array that started it all — the rice-mill operation whose electricity bills first pushed True East toward solar.'
+		note: 'The 350 kWp rooftop array that started it all, the rice-mill operation whose electricity bills first pushed True East toward solar.'
 	},
 	{
 		slug: 'agbayani-agro-industrial',
@@ -157,11 +157,11 @@ export const projects: Project[] = [
 		battery: '280 Ah battery storage',
 		folder: 'dr-fonte',
 		photos: 4,
-		note: 'Round-the-clock resilience for a clinic and pharmacy — solar by day, stored power through every brownout.'
+		note: 'Round-the-clock resilience for a clinic and pharmacy: solar by day, stored power through every brownout.'
 	},
 	{
 		slug: 'mdrrmo-roxas',
-		name: 'MDRRMO — Roxas',
+		name: 'MDRRMO, Roxas',
 		location: 'Roxas, Oriental Mindoro',
 		sector: 'Government',
 		system: 'On-Grid',
@@ -206,7 +206,7 @@ export const projects: Project[] = [
 	},
 	{
 		slug: 'lgu-roxas-municipal',
-		name: 'Municipal Building — LGU Roxas',
+		name: 'Municipal Building, LGU Roxas',
 		location: 'Roxas, Oriental Mindoro',
 		sector: 'Government',
 		system: 'On-Grid',
@@ -222,7 +222,7 @@ export const projects: Project[] = [
 		system: 'On-Grid',
 		status: 'Ongoing',
 		capacityKwp: 150.04,
-		note: 'True East&rsquo;s largest commission to date — 150.04 kWp keeping a hospital running on sunlight.'
+		note: 'True East&rsquo;s largest commission to date, 150.04 kWp keeping a hospital running on sunlight.'
 	}
 ];
 

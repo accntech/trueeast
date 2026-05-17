@@ -18,7 +18,7 @@
 
 <Seo
 	title="About"
-	description="True East Energy Corp. — an engineer-led solar company born from a rice mill in Bongabong, Oriental Mindoro. SEC-registered, PhilGEPS-eligible."
+	description="True East Energy Corp. is an engineer-led solar company born from a rice mill in Bongabong, Oriental Mindoro. SEC-registered, PhilGEPS-eligible."
 	image="/og/about.jpg"
 />
 
@@ -31,7 +31,7 @@
 		</h1>
 		<p class="mt-8 max-w-[30ch] text-ink-soft text-xl">
 			True East Energy Corp. is a Philippine stock corporation in power generation, transmission
-			and distribution — founded where the electricity bill hurt most, and run by the engineer
+			and distribution, founded where the electricity bill hurt most and run by the engineer
 			who solved it.
 		</p>
 	</div>
@@ -98,7 +98,7 @@
 			<p class="mt-[1.6rem] max-w-[48ch] text-ink-soft text-lg">
 				A graduate of Mapúa University with {company.leader.experience} years of experience as a
 				plant engineer, he ensures every project is carefully designed, engineered and managed
-				for maximum efficiency and reliability — the reason True East is engineer-led, not
+				for maximum efficiency and reliability. That is why True East is engineer-led, not
 				sales-led.
 			</p>
 		</div>
@@ -125,7 +125,7 @@
 			class="mt-[1.6rem] max-w-[24ch] font-display font-semibold text-[clamp(1.8rem,1.1rem+3vw,3.6rem)] text-on-night text-balance leading-[1.06]"
 		>
 			Help clients cut electricity costs and carbon footprints, and support the global shift to
-			renewable energy — with systems that are innovative, sustainable and dependable.
+			renewable energy, with systems that are innovative, sustainable and dependable.
 		</p>
 	</div>
 </section>

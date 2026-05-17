@@ -54,7 +54,7 @@ export const sendContactEmail = async (
 			address: data.email,
 			display_name: data.name
 		},
-		subject: `Solar enquiry — ${data.kind} — ${data.name}`,
+		subject: `Solar enquiry: ${data.kind} (${data.name})`,
 		html
 	};
 

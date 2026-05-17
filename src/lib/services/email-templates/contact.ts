@@ -1,7 +1,7 @@
 import type { ContactForm } from '$lib/schemas/contact';
 
 export function generate(data: ContactForm): string {
-	const preheader = `${data.name} — ${data.kind}`;
+	const preheader = `${data.name}, ${data.kind}`;
 
 	const row = (label: string, value: string) => `
 								<tr>
@@ -27,7 +27,7 @@ export function generate(data: ContactForm): string {
 </head>
 <body style="margin: 0; padding: 0; background-color: #f4efe3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
 	<div style="display: none; max-height: 0; overflow: hidden; mso-hide: all; font-size: 1px; line-height: 1px; color: #f4efe3;">
-		New solar enquiry — ${escapeHtml(preheader)}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+		New solar enquiry: ${escapeHtml(preheader)}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
 	</div>
 	<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4efe3; padding: 36px 16px;">
 		<tr>

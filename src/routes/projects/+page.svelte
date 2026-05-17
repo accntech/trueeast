@@ -26,7 +26,7 @@
 
 <Seo
 	title="Projects"
-	description="From a 350 kWp rice-mill array to hospitals, schools, parishes and homes — 17 completed solar installations and 250 kWp under construction across Oriental Mindoro."
+	description="From a 350 kWp rice-mill array to hospitals, schools, parishes and homes: 17 completed solar installations and 250 kWp under construction across Oriental Mindoro."
 	image="/og/projects.jpg"
 />
 
@@ -38,7 +38,7 @@
 			Seventeen roofs,<br />and counting.
 		</h1>
 		<p class="mt-8 max-w-[44ch] text-ink-soft text-xl">
-			Every installation below is a real building with a real meter — mills, schools, clinics,
+			Every installation below is a real building with a real meter: mills, schools, clinics,
 			parishes, government offices and homes across Oriental Mindoro and beyond.
 		</p>
 		<div
