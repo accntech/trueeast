@@ -303,6 +303,12 @@
 	box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-amber-deep) 35%, transparent);
 }
 
+.btn:disabled {
+	cursor: not-allowed;
+	opacity: 0.55;
+	transform: none;
+}
+
 .btn-ghost {
 	--_bg: transparent;
 	--_fg: var(--color-ink);
