@@ -58,7 +58,13 @@
 			<div
 				class="flex items-baseline gap-[1.1rem] mt-[0.8rem] font-display uppercase tracking-[0.08em] tabular"
 			>
-				<span class="font-bold text-[1.15rem] text-on-night">{cap}</span>
+				<span class="font-bold text-[1.15rem] text-on-night">
+					{#if project.capacityKwp != null}
+						{project.capacityKwp.toLocaleString('en-US')} <span class="normal-case">kWp</span>
+					{:else}
+						{cap}
+					{/if}
+				</span>
 				<span class="text-[0.92rem] text-on-night-soft tracking-[0.12em]">{project.location}</span>
 			</div>
 		</div>
@@ -77,7 +83,7 @@
 			>
 				{#if project.capacityKwp != null}
 					{project.capacityKwp.toLocaleString('en-US')}<span
-						class="ml-[0.4rem] font-semibold text-[0.3em] text-ink-faint uppercase tracking-[0.16em]"
+						class="ml-[0.4rem] font-semibold text-[0.3em] text-ink-faint tracking-[0.02em]"
 						>kWp</span
 					>
 				{:else}
