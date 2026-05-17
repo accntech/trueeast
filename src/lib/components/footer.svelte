@@ -23,6 +23,23 @@
 				<p class="mt-4 text-on-night-soft text-sm tracking-[0.04em]">
 					SEC Reg. No. {company.sec} · PhilGEPS-registered
 				</p>
+				<a
+					href="/true-east-energy-company-profile.pdf"
+					download="True East Energy Company Profile.pdf"
+					class="btn btn-ghost btn-on-night mt-7"
+				>
+					Download company profile
+					<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+						<path
+							d="M8 2.5v7M5.2 6.6 8 9.5l2.8-2.9M3 12.5h10"
+							stroke="currentColor"
+							stroke-width="1.7"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</a>
 			</div>
 
 			<nav class="flex flex-col gap-[0.7rem]" aria-label="Footer">
