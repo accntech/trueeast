@@ -21,6 +21,8 @@ export const company = {
     city: "Bongabong",
     province: "Oriental Mindoro",
     country: "Philippines",
+    region: "PH-MDR",
+    geo: { lat: 12.6319908, lng: 121.4974872 },
   },
   email: "trueeastenergy@gmail.com",
   phone: "+63 917 586 9175",

@@ -1,2 +1,5 @@
+# allow crawling everything by default
 User-agent: *
-Allow: /
+Disallow:
+
+Sitemap: https://trueeastenergy.ph/sitemap.xml
