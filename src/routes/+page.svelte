@@ -53,8 +53,8 @@
 		<h1
 			class="mt-[1.6rem] font-display font-extrabold text-d-xl text-on-night uppercase leading-[0.84] tracking-[-0.015em]"
 		>
-			<span class="{loadCls} block" style="--d:90ms">Power that</span>
-			<span class="{loadCls} block" style="--d:190ms">rises in</span>
+			<span class="{loadCls} block" style="--d:90ms">Power</span>
+			<span class="{loadCls} block" style="--d:190ms">rising in</span>
 			<span class="{loadCls} block text-amber" style="--d:290ms">the East</span>
 		</h1>
 		<p class="{loadCls} mt-6 max-w-[52ch] text-lg text-on-night-soft" style="--d:430ms">

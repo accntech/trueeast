@@ -4,7 +4,7 @@
 export const company = {
   name: "True East Energy Corp.",
   shortName: "True East",
-  tagline: "Power that rises in the East.",
+  tagline: "Power rising in the East.",
   sec: "202406015446-02",
   founded: 2024,
   type: "Stock Corporation: power generation, transmission & distribution",
