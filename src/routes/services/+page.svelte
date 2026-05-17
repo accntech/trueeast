@@ -9,6 +9,7 @@
 <Seo
 	title="Services"
 	description="On-Grid and Hybrid solar with battery storage — delivered as a true turn-key package: engineering, design, procurement, installation and after-sales support."
+	image="/og/services.jpg"
 />
 
 <header class="isolate relative flex min-h-svh flex-col justify-center overflow-hidden py-32">

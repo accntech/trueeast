@@ -27,6 +27,7 @@
 <Seo
 	title="Projects"
 	description="From a 350 kWp rice-mill array to hospitals, schools, parishes and homes — 17 completed solar installations and 250 kWp under construction across Oriental Mindoro."
+	image="/og/projects.jpg"
 />
 
 <header class="isolate relative flex min-h-svh flex-col justify-center overflow-hidden py-32">

@@ -66,6 +66,7 @@
 <Seo
 	title="Contact"
 	description="Talk to True East Energy Corp. — engineer-led solar in Bongabong, Oriental Mindoro. Request a turn-key On-Grid or Hybrid proposal."
+	image="/og/contact.jpg"
 />
 
 <header class="isolate relative flex min-h-svh flex-col justify-center overflow-hidden py-32">

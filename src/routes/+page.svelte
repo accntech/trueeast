@@ -23,6 +23,7 @@
 <Seo
 	title="Solar power, engineered"
 	description="True East Energy Corp. — engineer-led turn-key On-Grid and Hybrid solar across Oriental Mindoro. 550+ kWp commissioned, from rice mills to hospitals."
+	image="/og/home.jpg"
 />
 
 <!-- ───────── hero ───────── -->

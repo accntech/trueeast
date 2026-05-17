@@ -18,6 +18,7 @@
 <Seo
 	title="About"
 	description="True East Energy Corp. — an engineer-led solar company born from a rice mill in Bongabong, Oriental Mindoro. SEC-registered, PhilGEPS-eligible."
+	image="/og/about.jpg"
 />
 
 <header class="isolate relative flex flex-col justify-center py-32 min-h-svh overflow-hidden">
