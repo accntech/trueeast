@@ -22,3 +22,6 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .gstack/
+
+# Generated company profile (regenerate: bun profile/build.ts)
+profile/company-profile.md
