@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-PH">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#f3ead6" />
+		<meta name="robots" content="noindex" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<title>Error %sveltekit.status% — True East Energy Corp.</title>
+		<style>
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+				margin: 0;
+			}
+			html {
+				-webkit-text-size-adjust: 100%;
+			}
+			body {
+				min-height: 100dvh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: 8vh 1.5rem;
+				background-color: #f3ead6;
+				background-color: oklch(0.964 0.014 82);
+				background-image: radial-gradient(
+						120% 80% at 84% -10%,
+						oklch(0.85 0.13 76 / 0.18),
+						transparent 60%
+					),
+					radial-gradient(90% 70% at 6% 108%, oklch(0.52 0.118 152 / 0.07), transparent 55%);
+				color: #2b3a30;
+				color: oklch(0.243 0.024 150);
+				font-family: 'Hanken Grotesk Variable', system-ui, -apple-system, sans-serif;
+				font-size: 1.05rem;
+				line-height: 1.62;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			.wrap {
+				width: min(100% - 2.5rem, 52rem);
+				margin-inline: auto;
+			}
+			.eyebrow {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.6em;
+				font-family: 'Big Shoulders Variable', 'Arial Narrow', system-ui, sans-serif;
+				font-size: 0.95rem;
+				font-weight: 600;
+				letter-spacing: 0.26em;
+				text-transform: uppercase;
+				color: #5e6b5f;
+				color: oklch(0.424 0.022 138);
+			}
+			.eyebrow::before {
+				content: '';
+				width: 1.6rem;
+				height: 2px;
+				background: #e8a13c;
+				background: oklch(0.756 0.162 64);
+			}
+			h1 {
+				margin-top: 1.6rem;
+				font-family: 'Big Shoulders Variable', 'Arial Narrow', system-ui, sans-serif;
+				font-weight: 800;
+				font-size: clamp(3.6rem, 1.9rem + 8.2vw, 8.4rem);
+				line-height: 0.86;
+				letter-spacing: -0.01em;
+				text-transform: uppercase;
+				text-wrap: balance;
+			}
+			p {
+				margin-top: 2rem;
+				max-width: 34ch;
+				font-size: clamp(1.12rem, 1.03rem + 0.42vw, 1.35rem);
+				line-height: 1.5;
+				color: #5e6b5f;
+				color: oklch(0.424 0.022 138);
+				text-wrap: pretty;
+			}
+			.rule {
+				position: relative;
+				height: 1px;
+				border: 0;
+				margin-top: 2.6rem;
+				background: #cabfa3;
+				background: oklch(0.79 0.02 80);
+			}
+			.rule::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: min(40%, 16rem);
+				height: 3px;
+				background: linear-gradient(90deg, oklch(0.756 0.162 64), oklch(0.83 0.13 76) 55%, transparent);
+			}
+			a.btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.7em;
+				margin-top: 2.6rem;
+				padding: 0.95rem 1.6rem;
+				font-family: 'Big Shoulders Variable', 'Arial Narrow', system-ui, sans-serif;
+				font-size: 1.05rem;
+				font-weight: 600;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				text-decoration: none;
+				color: #1c241d;
+				color: oklch(0.22 0.02 150);
+				background: #e8a13c;
+				background: oklch(0.756 0.162 64);
+				border-radius: 5px;
+				transition: background-color 220ms cubic-bezier(0.23, 1, 0.32, 1);
+			}
+			a.btn:hover {
+				background: #c9842b;
+				background: oklch(0.642 0.158 52);
+				color: #f6f1e4;
+				color: oklch(0.97 0.01 85);
+			}
+			a.btn:focus-visible {
+				outline: none;
+				box-shadow: 0 0 0 3px color-mix(in oklch, oklch(0.642 0.158 52) 35%, transparent);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<span class="eyebrow">Error %sveltekit.status%</span>
+			<h1>Something tripped the breaker.</h1>
+			<p>%sveltekit.error.message%</p>
+			<div class="rule"></div>
+			<a class="btn" href="/">Back to home</a>
+		</div>
+	</body>
+</html>
