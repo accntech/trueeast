@@ -17,7 +17,7 @@
 		'Institutional',
 		'Residential'
 	];
-	const loadCls = 'translate-y-[1.6rem] opacity-0 animate-[load-in_0.85s_var(--ease-out)_forwards]';
+	const loadCls = 'rise';
 </script>
 
 <Seo

@@ -31,7 +31,7 @@
 
 <header class="isolate relative flex min-h-svh flex-col justify-center overflow-hidden py-32">
 	<SunField />
-	<div class="relative wrap">
+	<div class="relative wrap page-head">
 		<span class="eyebrow">The portfolio</span>
 		<h1 class="mt-[1.6rem] font-extrabold text-d-lg uppercase leading-[0.86]">
 			Seventeen roofs,<br />and counting.

@@ -88,6 +88,16 @@
 		transform: none;
 	}
 }
+@keyframes head-rise {
+	from {
+		opacity: 0;
+		transform: translateY(0.9rem);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
 
 @layer base {
 	html {
@@ -427,6 +437,31 @@
 	box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-amber-deep) 35%, transparent);
 }
 
+/* ───────── page-heading rise (progressive enhancement, scoped to html.js) ─────────
+   Each +page.svelte remounts on navigation, so this entrance replays on every
+   route switch. The interior masthead is eyebrow → h1 → lede; they rise in a
+   gentle stagger. Without JS the html.js scope never matches, so the heading is
+   simply visible. */
+
+.js .page-head > * {
+	animation: head-rise 0.7s var(--ease-out) both;
+}
+.js .page-head > :nth-child(2) {
+	animation-delay: 90ms;
+}
+.js .page-head > :nth-child(3) {
+	animation-delay: 185ms;
+}
+
+/* The home hero's orchestrated load reveal — the one big signature moment.
+   Each element carries its own --d so the masthead rises line by line; it
+   replays on every navigation back to / because the page remounts. */
+.js .rise {
+	opacity: 0;
+	transform: translateY(1.6rem);
+	animation: load-in 0.85s var(--ease-out) var(--d, 0ms) forwards;
+}
+
 /* ───────── scroll reveal (progressive enhancement, scoped to html.js) ───────── */
 
 .js [data-reveal] {
@@ -467,6 +502,13 @@
 		opacity: 1;
 		transform: none;
 		transition: none;
+	}
+	/* No delayed pop for the hero: the global duration reset alone would
+	   still gate each line behind its --d. Show the masthead at rest. */
+	.js .rise {
+		opacity: 1;
+		transform: none;
+		animation: none;
 	}
 	*,
 	*::before,
