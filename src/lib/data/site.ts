@@ -13,7 +13,7 @@ export const company = {
     name: "Engr. Vincent Vir M. Agbayani",
     role: "Principal Electrical Engineer & Founder",
     credential: "Registered Electrical Engineer · Mapúa University",
-    experience: 14,
+    experience: 16,
   },
   office: {
     line1: "GF VMA Admin. Bldg",
