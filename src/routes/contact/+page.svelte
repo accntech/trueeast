@@ -15,7 +15,9 @@
 
 	const kinds = [
 		'On-Grid system',
+		'Off-Grid system',
 		'Hybrid + battery storage',
+		'Micro-grid System',
 		'Not sure yet'
 	];
 
@@ -69,7 +71,7 @@
 	image="/og/contact.jpg"
 />
 
-<header class="isolate relative flex min-h-svh flex-col justify-center overflow-hidden py-32">
+<header class="isolate relative flex flex-col justify-center py-32 min-h-svh overflow-hidden">
 	<SunField />
 	<div class="relative wrap page-head">
 		<span class="eyebrow">Get in touch</span>
@@ -157,7 +159,7 @@
 					{#if status === 'error'}
 						<p
 							role="alert"
-							class="rounded-md border border-line-strong bg-paper-2 px-4 py-3 text-ink-soft text-sm"
+							class="bg-paper-2 px-4 py-3 border border-line-strong rounded-md text-ink-soft text-sm"
 						>
 							We couldn&rsquo;t send your enquiry just now. Please try again, or email us
 							directly at
@@ -223,14 +225,14 @@
 	</div>
 </section>
 
-<section class="section-y border-line border-t">
+<section class="border-line border-t section-y">
 	<div class="wrap">
 		<span class="eyebrow">Find the office</span>
-		<div class="mt-8 aspect-4/3 overflow-hidden rounded-md border border-line md:aspect-2/1">
+		<div class="mt-8 border border-line rounded-md aspect-4/3 md:aspect-2/1 overflow-hidden">
 			<iframe
 				title="Map of the True East Energy Corp. head office on the Strong Republic Nautical Highway, Bongabong, Oriental Mindoro"
 				src="https://www.google.com/maps?q=12.6319908,121.4974872&amp;z=17&amp;hl=en&amp;t=h&amp;output=embed"
-				class="size-full border-0"
+				class="border-0 size-full"
 				loading="lazy"
 				referrerpolicy="no-referrer-when-downgrade"
 				allowfullscreen
