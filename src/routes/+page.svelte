@@ -107,7 +107,7 @@
 				We deliver a genuine turn-key package: engineering, design, procurement, installation
 				and after-sales support, all under one accountable roof, led by
 				<strong class="font-semibold text-ink">Engr. Vincent Vir M. Agbayani</strong>,
-				Registered Electrical Engineer with 14 years of plant experience.
+				Registered Electrical Engineer with 16 years of plant experience.
 			</p>
 			<ul class="flex flex-wrap gap-2 mt-8">
 				{#each sectorsServed as s (s)}

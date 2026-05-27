@@ -263,7 +263,7 @@ ${figure('hero.jpg', 'Aerial view of the 350 kWp rooftop solar array on the VM A
 <div class="stats">
 <div><b>550<i>+</i></b><span>kWp commissioned</span></div>
 <div><b>17</b><span>installations completed</span></div>
-<div><b>14</b><span>years engineering leadership</span></div>
+<div><b>16</b><span>years engineering leadership</span></div>
 <div><b>250</b><span>kWp in construction</span></div>
 </div>
 
@@ -302,9 +302,9 @@ Oriental Mindoro and beyond.
 
 ## Engr. Vincent Vir M. Agbayani
 
-<p><strong>Principal Electrical Engineer and Founder</strong><br>Registered Electrical Engineer · Mapúa University · 14 years of plant experience</p>
+<p><strong>Principal Electrical Engineer and Founder</strong><br>Registered Electrical Engineer · Mapúa University · 16 years of plant experience</p>
 
-He trained at Mapúa University and spent 14 years as a plant engineer. Every
+He trained at Mapúa University and spent 16 years as a plant engineer. Every
 project is designed, engineered and managed by him, sized for efficiency and
 built to last. That is why True East is engineer-led, not sales-led, and why
 one accountable team carries each job from engineering and design through
@@ -368,7 +368,7 @@ ${figure('drfonte.jpg', 'Hybrid solar with battery storage at Dr. Fonte Medical 
 ## Why True East
 
 <div class="adv">
-<div><h4>Engineer-led, not sales-led</h4><p>Every project is designed, engineered and managed by a Registered Electrical Engineer with 14 years of plant experience.</p></div>
+<div><h4>Engineer-led, not sales-led</h4><p>Every project is designed, engineered and managed by a Registered Electrical Engineer with 16 years of plant experience.</p></div>
 <div><h4>A genuine turn-key package</h4><p>Engineering, design, procurement, installation and after-sales support under one accountable roof.</p></div>
 <div><h4>Built from real operating pain</h4><p>Founded out of a rice mill fighting its own electricity costs, so the savings case is lived, not pitched.</p></div>
 <div><h4>PhilGEPS-registered</h4><p>Eligible for government and public-sector procurement, in full compliance with national standards.</p></div>
