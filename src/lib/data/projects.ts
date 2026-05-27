@@ -215,8 +215,8 @@ export const projects: Project[] = [
 		note: 'A 100 kWp public-sector installation delivered under PhilGEPS procurement.'
 	},
 	{
-		slug: 'pinamalayan-doctors-hospital',
-		name: 'Pinamalayan Doctors Hospital',
+		slug: 'private-hospital-mindoro',
+		name: 'Private Hospital',
 		location: 'Pinamalayan, Oriental Mindoro',
 		sector: 'Healthcare',
 		system: 'On-Grid',
