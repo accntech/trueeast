@@ -9,6 +9,7 @@
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
 
 const here = import.meta.dir;
 const root = join(here, '..');
@@ -440,5 +441,43 @@ building details and a recent electricity bill.</p>
 <p class="colophon">True East Energy Corp. · Power rising in the East · trueeastenergy.com</p>
 `;
 
-writeFileSync(join(here, 'company-profile.md'), md, 'utf8');
+const mdPath = join(here, 'company-profile.md');
+writeFileSync(mdPath, md, 'utf8');
 console.log(`company-profile.md written (${(md.length / 1024 / 1024).toFixed(2)} MB)`);
+
+/* Render to A4 PDF via gstack make-pdf. The cover device, TOC styling and
+   centred running header in this template depend on these exact flags. The
+   PDF lands both at the repo root (the canonical artefact) and in static/
+   (the downloadable served from the footer). */
+const pdfBin = `${process.env.HOME}/.claude/skills/gstack/make-pdf/dist/pdf`;
+const outputs = [
+	join(root, 'True East Energy Corp - Company Profile.pdf'),
+	join(root, 'static/true-east-energy-company-profile.pdf')
+];
+for (const out of outputs) {
+	const res = spawnSync(
+		pdfBin,
+		[
+			'generate',
+			'--cover',
+			'--toc',
+			'--no-confidential',
+			'--no-chapter-breaks',
+			'--page-size',
+			'a4',
+			'--title',
+			'True East Energy Corp.',
+			'--author',
+			'Company Profile · trueeastenergy.com',
+			'--date',
+			'2026',
+			mdPath,
+			out
+		],
+		{ stdio: 'inherit' }
+	);
+	if (res.status !== 0) {
+		console.error(`make-pdf failed for ${out} (exit ${res.status}); skipping`);
+		break;
+	}
+}
