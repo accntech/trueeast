@@ -57,7 +57,7 @@ const completed = [
 ];
 const ongoing = [
 	['Municipal Building, LGU Roxas', 'Roxas, Oriental Mindoro', 'Government', 'On-Grid', '100'],
-	['Pinamalayan Doctors Hospital', 'Pinamalayan, Oriental Mindoro', 'Healthcare', 'On-Grid', '150.04']
+	['Private Hospital', 'Pinamalayan, Oriental Mindoro', 'Healthcare', 'On-Grid', '150.04']
 ];
 const row = (r: string[]) => `| ${r.join(' | ')} |`;
 const head = '| Project | Location | Sector | System | kWp |\n| :-- | :-- | :-- | :-- | --: |';
@@ -393,8 +393,8 @@ ${plate('kayzelle.jpg', 'Residential hybrid solar at the Kayzelle Gutierrez Resi
 
 Seventeen installations are complete, and two flagship commissions are in
 construction: a 100 kWp public-sector array for LGU Roxas under PhilGEPS
-procurement, and 150.04 kWp keeping Pinamalayan Doctors Hospital running on
-sunlight. That hospital is the largest job True East has taken on so far.
+procurement, and 150.04 kWp keeping a private hospital running on sunlight.
+That hospital is the largest job True East has taken on so far.
 
 ## Completed
 
