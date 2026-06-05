@@ -80,7 +80,7 @@ export const process: ProcessStep[] = [
 export const advantages = [
 	{
 		title: 'Engineer-led, not sales-led',
-		body: 'Every project is designed, engineered and managed by a Registered Electrical Engineer with 14 years of plant experience.'
+		body: 'Every project is designed, engineered and managed by a Registered Electrical Engineer with 16 years of plant experience.'
 	},
 	{
 		title: 'A genuine turn-key package',
