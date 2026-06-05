@@ -38,7 +38,7 @@ export const stats = [
     label: "Solar capacity commissioned",
   },
   { value: 17, suffix: "", unit: "projects", label: "Installations completed" },
-  { value: 14, suffix: "", unit: "years", label: "Engineering leadership" },
+  { value: 16, suffix: "", unit: "years", label: "Engineering leadership" },
   {
     value: 250,
     suffix: "",
