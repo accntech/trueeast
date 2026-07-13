@@ -48,7 +48,7 @@
 			class="{loadCls} inline-flex items-center gap-3 font-display text-[clamp(0.85rem,0.78rem+0.3vw,1rem)] font-semibold uppercase tracking-[0.28em] text-on-night-soft"
 			style="--d:0ms"
 		>
-			<span class="bg-amber w-[2.2rem] h-0.5"></span>Solar power &middot; Oriental Mindoro
+			<span class="bg-amber w-[2.2rem] h-0.5"></span>Solar power
 		</p>
 		<h1
 			class="mt-[1.6rem] font-display font-extrabold text-d-xl text-on-night uppercase leading-[0.84] tracking-[-0.015em]"
