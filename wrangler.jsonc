@@ -12,5 +12,19 @@
 	},
 	"assets": {
 		"html_handling": "drop-trailing-slash"
-	}
+	},
+	"workers_dev": true,
+	"secrets": {
+		"required": [
+			"MAILEROO_API_KEY",
+			"MAILEROO_SENDER_EMAIL"
+		]
+	},
+	"account_id": "5835f79f5f343c9a85d7922ecb9e3e79",
+	"routes": [
+		{
+			"pattern": "trueeastenergy.com",
+			"custom_domain": true
+		}
+	]
 }

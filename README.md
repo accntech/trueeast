@@ -31,20 +31,20 @@ Unit tests cover the enquiry payload and API validation/delivery responses. Brow
 
 The official `@astrojs/cloudflare` adapter builds a Worker and static assets. `wrangler.jsonc` defines the Worker name and public email settings. Images are optimized at build time into AVIF/WebP; Cloudflare Images and KV are not required.
 
-Before deployment, configure these secrets through Cloudflare or Wrangler:
+Deployment and first-time setup are documented in [the Cloudflare deployment guide](docs/deployment/cloudflare.md).
 
 ```sh
-pnpm exec wrangler secret put MAILEROO_API_KEY
-pnpm exec wrangler secret put MAILEROO_SENDER_EMAIL
+pnpm exec wrangler login
+pnpm run deploy:check
 ```
 
-Then deploy when ready:
+The Worker is deployed at [trueeast.o-galicia-cpa.workers.dev](https://trueeast.o-galicia-cpa.workers.dev). Its two required email secrets are already configured in Cloudflare. Deploy subsequent releases with:
 
 ```sh
 pnpm run deploy
 ```
 
-`pnpm run deploy` builds the site and runs `wrangler deploy`. For Cloudflare's Git-connected Workers builds, use `pnpm build` as the build command and `pnpm exec wrangler deploy` as the deploy command. Use the existing custom domain `trueeastenergy.com` for canonical URLs, or change `site` in `astro.config.mjs` and `ORIGIN` in `src/lib/data/site.ts` together when moving domains.
+`wrangler.jsonc` declares `trueeastenergy.com` as its custom domain. The initial domain connection requires removing the previous Vercel CNAME; see the deployment guide.
 
 The JSON endpoint remains `POST /api/contact`. Runtime settings retain their names: `MAILEROO_BASE_URL`, `MAILEROO_API_KEY`, `MAILEROO_SENDER_EMAIL`, `MAILEROO_SENDER_NAME`, and `CONTACT_RECIPIENT_EMAIL`.
 
