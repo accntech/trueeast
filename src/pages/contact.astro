@@ -2,6 +2,7 @@
 import { company } from '$data/site';
 import Layout from '../layouts/site.astro';
 import SunField from '$components/sun-field.astro';
+import Select from '$components/select.astro';
 
 const kinds = [
 	'On-Grid system',
@@ -106,13 +107,21 @@ const labelCls =
 					</div>
 					<div class="gap-7 grid grid-cols-1 sm:grid-cols-2">
 						<label class="block">
-							<span class={labelCls}>Name</span>
+							<span id="name-label" class={labelCls}>Name</span>
 							<input
 								class={fieldCls}
 								name="name"
+								aria-describedby="name-error"
+								aria-labelledby="name-label"
 								required
 								autocomplete="name"
 							/>
+							<span
+								id="name-error"
+								data-field-error="name"
+								class="field-error"
+								hidden
+							></span>
 						</label>
 						<label class="block">
 							<span class={labelCls}>Phone</span>
@@ -125,36 +134,53 @@ const labelCls =
 						</label>
 					</div>
 					<label class="block">
-						<span class={labelCls}>Email</span>
+						<span id="email-label" class={labelCls}>Email</span>
 						<input
 							class={fieldCls}
 							name="email"
+							aria-describedby="email-error"
+							aria-labelledby="email-label"
 							type="email"
 							required
 							autocomplete="email"
 						/>
+						<span
+							id="email-error"
+							data-field-error="email"
+							class="field-error"
+							hidden
+						></span>
 					</label>
 					<div class="block">
 						<span id="kind-label" class={labelCls}>
 							What are you considering?
 						</span>
-						<select name="kind" aria-labelledby="kind-label" class={fieldCls}>
-							{kinds.map((option) => (
-								<option value={option} selected={option === 'Not sure yet'}>
-									{option}
-								</option>
-							))}
-						</select>
+						<Select
+							id="kind"
+							name="kind"
+							labelledby="kind-label"
+							options={kinds}
+							value="Not sure yet"
+							class={fieldCls}
+						/>
 					</div>
 					<label class="block">
-						<span class={labelCls}>Tell us about the building</span>
+						<span id="message-label" class={labelCls}>Tell us about the building</span>
 						<textarea
 							class={`${fieldCls} min-h-32 resize-y`}
 							name="message"
+							aria-describedby="message-error"
+							aria-labelledby="message-label"
 							required
 							rows="5"
 							placeholder="Roof type, floor area, monthly bill, location…"
 						></textarea>
+						<span
+							id="message-error"
+							data-field-error="message"
+							class="field-error"
+							hidden
+						></span>
 					</label>
 					<p
 						hidden
@@ -278,3 +304,22 @@ const labelCls =
 <script>
 	import '../scripts/contact-form';
 </script>
+
+<style>
+	.field-error {
+		display: block;
+		margin-top: 0.5rem;
+		color: #a13424;
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+	.field-error[hidden] {
+		display: none;
+	}
+	[aria-invalid='true'] {
+		border-color: #a13424;
+	}
+	[aria-invalid='true']:focus-visible {
+		box-shadow: 0 0 0 3px color-mix(in srgb, #a13424 18%, transparent);
+	}
+</style>

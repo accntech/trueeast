@@ -97,8 +97,9 @@ test('contact form supports errors, retry, success and reset', async ({
 		.getByRole('textbox', { name: 'Email', exact: true })
 		.fill('maria@example.com');
 	await page
-		.getByLabel('What are you considering?')
-		.selectOption('Hybrid + battery storage');
+		.getByRole('combobox', { name: 'What are you considering?' })
+		.click();
+	await page.getByRole('option', { name: 'Hybrid + battery storage' }).click();
 	await page
 		.getByRole('textbox', { name: 'Tell us about the building' })
 		.fill('Rice mill, 300 sqm roof.');
@@ -120,9 +121,73 @@ test('contact form supports errors, retry, success and reset', async ({
 	await expect(
 		page.getByRole('textbox', { name: 'Name', exact: true }),
 	).toHaveValue('');
-	await expect(page.getByLabel('What are you considering?')).toHaveValue(
+	await expect(page.getByRole('combobox', { name: 'What are you considering?' })).toHaveText(
 		'Not sure yet',
 	);
+});
+
+test('contact form shows inline required and email errors before sending', async ({ page }) => {
+	let requests = 0;
+	await page.route('**/api/contact', async (route) => {
+		requests++;
+		await route.fulfill({ json: { success: true } });
+	});
+	await page.goto('/contact');
+	const name = page.getByRole('textbox', { name: 'Name', exact: true });
+	const email = page.getByRole('textbox', { name: 'Email', exact: true });
+	const message = page.getByRole('textbox', { name: 'Tell us about the building' });
+	await page.getByRole('button', { name: 'Send enquiry', exact: true }).click();
+	await expect(name).toBeFocused();
+	for (const field of [name, email, message]) {
+		await expect(field).toHaveAttribute('aria-invalid', 'true');
+		await expect(field).toHaveAccessibleDescription(/Please/);
+	}
+	await name.fill('   ');
+	await expect(name).toHaveAttribute('aria-invalid', 'true');
+	await name.fill('Maria');
+	await expect(name).not.toHaveAttribute('aria-invalid', 'true');
+	await email.fill('invalid');
+	await expect(email).toHaveAccessibleDescription('Please enter a valid email address.');
+	await message.fill('A rice mill in Mindoro.');
+	await page.getByRole('button', { name: 'Send enquiry', exact: true }).click();
+	await expect(email).toBeFocused();
+	expect(requests).toBe(0);
+	await email.fill('maria@example.com');
+	await expect(email).not.toHaveAttribute('aria-invalid', 'true');
+	await page.getByRole('button', { name: 'Send enquiry', exact: true }).click();
+	await expect(page.getByRole('heading', { name: /Thank you/ })).toBeVisible();
+	expect(requests).toBe(1);
+});
+
+test('custom enquiry select supports keyboard selection and dismissal on mobile', async ({ page }) => {
+	await page.setViewportSize({ width: 390, height: 844 });
+	await page.goto('/contact');
+	const select = page.getByRole('combobox', { name: 'What are you considering?' });
+	await expect(select).toHaveText('Not sure yet');
+	await select.focus();
+	await select.press('Enter');
+	await expect(page.getByRole('listbox')).toBeVisible();
+	await select.press('Home');
+	await select.press('ArrowDown');
+	await select.press('Enter');
+	await expect(select).toHaveText('Off-Grid system');
+	await expect(select).toBeFocused();
+	await select.press('Space');
+	await select.press('End');
+	await select.press('Escape');
+	await expect(select).toHaveText('Off-Grid system');
+	await expect(page.getByRole('listbox')).toBeHidden();
+	await select.press('h');
+	await select.press('Tab');
+	await expect(select).toHaveText('Hybrid + battery storage');
+	await expect(page.getByRole('textbox', { name: 'Tell us about the building' })).toBeFocused();
+	await select.click();
+	await page.getByRole('option', { name: 'Micro-grid System' }).click();
+	await expect(select).toHaveText('Micro-grid System');
+	await select.click();
+	await page.getByRole('textbox', { name: 'Email', exact: true }).click();
+	await expect(select).toHaveAttribute('aria-expanded', 'false');
+	expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
 test('missing pages return a branded 404', async ({ page }) => {

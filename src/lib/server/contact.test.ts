@@ -33,8 +33,11 @@ describe('contact API', () => {
 		{ ...valid, email: 'invalid' },
 		{ ...valid, message: '' },
 		{ ...valid, name: '' },
+		{ ...valid, name: '   ' },
+		{ ...valid, message: ' \n\t ' },
 		{ ...valid, kind: '' },
 	])('rejects invalid fields', async (body) => {
+		vi.mocked(sendContactEmail).mockResolvedValue({ success: true });
 		expect((await post(body)).status).toBe(400);
 		expect(sendContactEmail).not.toHaveBeenCalled();
 	});
