@@ -1,42 +1,60 @@
-# sv
+# True East Energy
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Company website built with Astro, TypeScript and Tailwind CSS. Pages are prerendered; the contact API runs on Cloudflare Workers.
 
-## Creating a project
+## Local development
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
+Requires Node.js 22.12 or newer and pnpm 11.19.
 
 ```sh
-# recreate this project
-npx sv@0.15.3 create --template minimal --types ts --no-install .
+pnpm install
+cp .env.example .env
+pnpm dev
 ```
 
-## Developing
+Open http://localhost:4321. Set your Maileroo API key and verified sender address in `.env` to test real delivery. Cloudflare also supports `.dev.vars` for local secrets; neither file should be committed.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Checks
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm check
+pnpm test
+pnpm exec playwright install chromium
+pnpm test:e2e
+pnpm build
+pnpm preview
 ```
 
-## Building
+Unit tests cover the enquiry payload and API validation/delivery responses. Browser tests cover all pages, metadata, images, project filters, mobile navigation, enquiry success/retry/reset, 404s and content without JavaScript. Tests mock delivery and do not send real emails.
 
-To create a production version of your app:
+## Cloudflare Workers
+
+The official `@astrojs/cloudflare` adapter builds a Worker and static assets. `wrangler.jsonc` defines the Worker name and public email settings. Images are optimized at build time into AVIF/WebP; Cloudflare Images and KV are not required.
+
+Before deployment, configure these secrets through Cloudflare or Wrangler:
 
 ```sh
-npm run build
+pnpm exec wrangler secret put MAILEROO_API_KEY
+pnpm exec wrangler secret put MAILEROO_SENDER_EMAIL
 ```
 
-You can preview the production build with `npm run preview`.
+Then deploy when ready:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+pnpm run deploy
+```
+
+`pnpm run deploy` builds the site and runs `wrangler deploy`. For Cloudflare's Git-connected Workers builds, use `pnpm build` as the build command and `pnpm exec wrangler deploy` as the deploy command. Use the existing custom domain `trueeastenergy.com` for canonical URLs, or change `site` in `astro.config.mjs` and `ORIGIN` in `src/lib/data/site.ts` together when moving domains.
+
+The JSON endpoint remains `POST /api/contact`. Runtime settings retain their names: `MAILEROO_BASE_URL`, `MAILEROO_API_KEY`, `MAILEROO_SENDER_EMAIL`, `MAILEROO_SENDER_NAME`, and `CONTACT_RECIPIENT_EMAIL`.
+
+## Source layout
+
+- `src/pages/`: the five public pages, error pages and contact API.
+- `src/layouts/site.astro`: document shell and shared navigation/footer.
+- `src/lib/components/`: native Astro components.
+- `src/scripts/`: browser behavior for the menu, filters, counters, reveals and contact form.
+- `src/lib/data/`: company, project and service content.
+- `src/lib/assets/projects/`: original photographs optimized by Astro.
+- `static/`: icons, social images, robots/sitemap and downloadable company profile (configured as Astro's public directory).
+- `profile/`: existing company-profile generation scripts.

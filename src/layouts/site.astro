@@ -1,0 +1,40 @@
+---
+import '../app.css';
+import Header from '$components/header.astro';
+import Footer from '$components/footer.astro';
+import Seo from '$components/seo.astro';
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	noindex?: boolean;
+}
+---
+
+<!doctype html>
+<html lang="en-PH">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#f3ead6" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png" />
+		<link rel="icon" href="/favicon-96.png" sizes="96x96" type="image/png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<Seo {...Astro.props} />
+	</head>
+	<body>
+		<a href="#main" class="skip-link">
+			Skip to content
+		</a>
+		<Header overHero={Astro.url.pathname === '/'} />
+		<main id="main">
+			<slot />
+		</main>
+		<Footer />
+		<script>
+			import '../scripts/reveal';
+		</script>
+	</body>
+</html>

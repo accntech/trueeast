@@ -1,0 +1,16 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "trueeast",
+	"compatibility_date": "2026-09-01",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"vars": {
+		"MAILEROO_BASE_URL": "https://smtp.maileroo.com/v1/email/send",
+		"MAILEROO_SENDER_NAME": "True East Energy Corp.",
+		"CONTACT_RECIPIENT_EMAIL": "trueeastenergy@gmail.com"
+	},
+	"assets": {
+		"html_handling": "drop-trailing-slash"
+	}
+}

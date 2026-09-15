@@ -25,3 +25,22 @@ vite.config.ts.timestamp-*
 
 # Generated company profile (regenerate: bun profile/build.ts)
 profile/company-profile.md
+
+# Astro and browser tests
+.astro/
+dist/
+playwright-report/
+test-results/
+
+# Cloudflare local secrets
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Keep the canonical package lockfile in version control.
+!pnpm-lock.yaml
+
+# Share the Astro editor recommendation.
+!.vscode/
+.vscode/*
+!.vscode/extensions.json

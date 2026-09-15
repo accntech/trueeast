@@ -444,7 +444,7 @@
 }
 
 /* ───────── page-heading rise (progressive enhancement, scoped to html.js) ─────────
-   Each +page.svelte remounts on navigation, so this entrance replays on every
+   Each Astro page loads on navigation, so this entrance replays on every
    route switch. The interior masthead is eyebrow → h1 → lede; they rise in a
    gentle stagger. Without JS the html.js scope never matches, so the heading is
    simply visible. */
@@ -461,7 +461,7 @@
 
 /* The home hero's orchestrated load reveal — the one big signature moment.
    Each element carries its own --d so the masthead rises line by line; it
-   replays on every navigation back to / because the page remounts. */
+   replays on every navigation back to / when a new document loads. */
 .js .rise {
 	opacity: 0;
 	transform: translateY(1.6rem);
@@ -522,4 +522,32 @@
 		animation-duration: 0.001ms !important;
 		animation-iteration-count: 1 !important;
 	}
+}
+
+/* Browser enhancements for the prerendered Astro components. */
+[hidden] { display: none !important; }
+[data-site-header][data-solid='true'] {
+  background: color-mix(in oklch, var(--color-paper) 85%, transparent);
+  border-color: var(--color-line);
+  backdrop-filter: blur(14px) saturate(1.4);
+}
+[data-site-header][data-solid='true'] [data-nav-link] { color: var(--color-ink-soft); }
+[data-site-header][data-solid='true'] [data-nav-link]:is(:hover, [aria-current='page']) { color: var(--color-ink); }
+[data-site-header][data-solid='true'] [data-header-logo] .text-on-night { color: var(--color-ink); }
+[data-site-header][data-solid='true'] [data-header-logo] .text-on-night-soft { color: var(--color-ink-faint); }
+[data-site-header][data-solid='true'] .menu-bar { background: var(--color-ink); }
+#site-menu[data-open='true'] { clip-path: inset(0); pointer-events: auto; }
+#site-menu[data-open='true'] nav a {
+  animation: menu-in 0.5s var(--ease-out) both;
+  animation-delay: calc(120ms + var(--i) * 55ms);
+}
+[data-project-filter][aria-pressed='true'] {
+  background: var(--color-ink); border-color: var(--color-ink); color: var(--color-paper);
+}
+[data-project-filter][aria-pressed='false'] {
+  background: transparent; border-color: var(--color-line-strong); color: var(--color-ink-soft);
+}
+@media (prefers-reduced-motion: reduce) {
+  #site-menu { transition: none; }
+  #site-menu[data-open='true'] nav a { animation: none; opacity: 1; transform: none; }
 }
