@@ -4,12 +4,12 @@ Company website built with Astro, TypeScript and Tailwind CSS. Pages are prerend
 
 ## Local development
 
-Requires Node.js 22.12 or newer and pnpm 11.19.
+Requires Node.js 22.12 or newer and Bun 1.4.0.
 
 ```sh
-pnpm install
+bun install --frozen-lockfile
 cp .env.example .env
-pnpm dev
+bun run dev
 ```
 
 Open http://localhost:4321. Set your Maileroo API key and verified sender address in `.env` to test real delivery. Cloudflare also supports `.dev.vars` for local secrets; neither file should be committed.
@@ -17,13 +17,15 @@ Open http://localhost:4321. Set your Maileroo API key and verified sender addres
 ## Checks
 
 ```sh
-pnpm check
-pnpm test
-pnpm exec playwright install chromium
-pnpm test:e2e
-pnpm build
-pnpm preview
+bun run check
+bun run test
+bunx playwright install chromium
+bun run test:e2e
+bun run build
+bun run preview
 ```
+
+Use `bun run test` to run the Vitest script; `bun test` invokes Bun's separate test runner. Commit `bun.lock` when dependencies change.
 
 Unit tests cover the enquiry payload and API validation/delivery responses. Browser tests cover all pages, metadata, images, project filters, mobile navigation, enquiry success/retry/reset, 404s and content without JavaScript. Tests mock delivery and do not send real emails.
 
@@ -34,14 +36,14 @@ The official `@astrojs/cloudflare` adapter builds a Worker and static assets. `w
 Deployment and first-time setup are documented in [the Cloudflare deployment guide](docs/deployment/cloudflare.md).
 
 ```sh
-pnpm exec wrangler login
-pnpm run deploy:check
+bunx wrangler login
+bun run deploy:check
 ```
 
 The Worker is deployed at [trueeast.o-galicia-cpa.workers.dev](https://trueeast.o-galicia-cpa.workers.dev). Its two required email secrets are already configured in Cloudflare. Deploy subsequent releases with:
 
 ```sh
-pnpm run deploy
+bun run deploy
 ```
 
 `wrangler.jsonc` declares `trueeastenergy.com` as its custom domain. The initial domain connection requires removing the previous Vercel CNAME; see the deployment guide.

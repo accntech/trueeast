@@ -11,7 +11,7 @@
 		"check:watch": "astro check --watch",
 		"test": "vitest run",
 		"test:e2e": "playwright test",
-		"deploy": "pnpm build && wrangler deploy",
+		"deploy": "bun run build && wrangler deploy",
 		"deploy:check": "astro check && vitest run && astro build && wrangler deploy --dry-run"
 	},
 	"devDependencies": {
@@ -36,5 +36,10 @@
 	"engines": {
 		"node": ">=22.12.0"
 	},
-	"packageManager": "pnpm@11.19.0"
+	"packageManager": "bun@1.4.0",
+	"trustedDependencies": [
+		"esbuild",
+		"sharp",
+		"workerd"
+	]
 }

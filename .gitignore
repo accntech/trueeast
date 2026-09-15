@@ -38,7 +38,7 @@ test-results/
 !.dev.vars.example
 
 # Keep the canonical package lockfile in version control.
-!pnpm-lock.yaml
+!bun.lock
 
 # Share the Astro editor recommendation.
 !.vscode/

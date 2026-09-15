@@ -1,5 +1,7 @@
 # Astro Migration Implementation Plan
 
+This is the historical migration record. Package-manager commands below describe the original validation; current Bun commands are in `README.md` and `docs/deployment/cloudflare.md`.
+
 **Goal:** Replace SvelteKit with native Astro while retaining the five public pages, appearance, project data, assets, metadata, and enquiry flow.
 **Approach:** Prerender Astro pages and shared components; implement menu, filter, counters, reveals and form behavior with browser TypeScript. Keep the existing Cloudflare Workers deployment target and JSON contact API, using runtime server secrets.
 **Constraints:** Work in the existing checkout. Do not commit without explicit confirmation. Preserve business content and public URLs. Never send real email during tests.

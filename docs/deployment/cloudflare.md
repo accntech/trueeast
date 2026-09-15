@@ -6,7 +6,7 @@
 - Initial address: [trueeast.o-galicia-cpa.workers.dev](https://trueeast.o-galicia-cpa.workers.dev).
 - Runtime: Cloudflare Workers, with prerendered pages and static images.
 - Dynamic route: `POST /api/contact`.
-- Build runtime: Node.js 24.12.0, pinned in `.node-version`; pnpm 11.19.0.
+- Build runtime: Node.js 24.12.0, pinned in `.node-version`; Bun 1.4.0.
 - Production canonical domain: `https://trueeastenergy.com`.
 
 `wrangler.jsonc` declares `trueeastenergy.com` as a Worker custom domain. The Worker is published and all 13 production browser checks pass on its workers.dev address; the custom-domain connection is pending removal of the old Vercel CNAME.
@@ -14,8 +14,8 @@
 ## 1. Authenticate and verify the account
 
 ```sh
-pnpm exec wrangler login
-pnpm exec wrangler whoami
+bunx wrangler login
+bunx wrangler whoami
 ```
 
 Complete the Cloudflare authorization in your browser. This checkout is already authenticated and `wrangler.jsonc` pins the confirmed account with `account_id`. Update that field deliberately if deploying into another account. The Worker `trueeast` already exists in this account.
@@ -23,12 +23,12 @@ Complete the Cloudflare authorization in your browser. This checkout is already 
 ## 2. Run deployment checks
 
 ```sh
-pnpm run deploy:check
+bun run deploy:check
 ```
 
 This checks types, runs unit tests, builds Astro, and validates the Worker upload with `wrangler deploy --dry-run`. It does not publish the site.
 
-Browser regression tests are also available with `pnpm test:e2e`.
+Browser regression tests are also available with `bun run test:e2e`.
 
 ## 3. Deploy with the email secrets
 
@@ -45,14 +45,14 @@ Create a private JSON or dotenv file containing only the two required secrets an
 For an existing Worker, you can update individual secrets interactively:
 
 ```sh
-pnpm exec wrangler secret put MAILEROO_API_KEY
-pnpm exec wrangler secret put MAILEROO_SENDER_EMAIL
+bunx wrangler secret put MAILEROO_API_KEY
+bunx wrangler secret put MAILEROO_SENDER_EMAIL
 ```
 
 Once the Worker already has its secrets, subsequent releases can use:
 
 ```sh
-pnpm run deploy
+bun run deploy
 ```
 
 Wrangler retains existing secrets during ordinary deployments. Public settings (the Maileroo API URL, sender display name, and enquiry recipient) come from `wrangler.jsonc`.
@@ -71,27 +71,39 @@ The configured custom domain is `trueeastenergy.com`. Cloudflare currently rejec
 After removing that conflicting website record, apply the configured domain:
 
 ```sh
-pnpm exec wrangler triggers deploy
+bunx wrangler triggers deploy
 ```
 
 Verify HTTPS and all five pages on the production domain. Keep the existing MX, SPF, DKIM and other email-related records.
 
 ## Git-connected Workers builds
 
-Use these settings if deploying from the repository:
+Connect **Workers & Pages → trueeast → Settings → Builds → Connect** to the GitHub repository, then use these settings:
 
 | Setting | Value |
 | --- | --- |
 | Repository | `accntech/trueeast` |
+| Production branch | `main` |
 | Root directory | Repository root |
-| Install command | `pnpm install --frozen-lockfile` |
-| Build command | `pnpm build` |
-| Deploy command | `pnpm exec wrangler deploy` |
-| Node.js | `24.12.0` |
+| Build command | `bun install --frozen-lockfile && bun run check && bun run test && bun run build` |
+| Deploy command | `bunx wrangler deploy` |
+| Non-production branch deploy command | `bunx wrangler versions upload` |
 
-Commit and push the prepared source before enabling Git-connected builds. Set the two email secrets on the Worker, not just in the build environment. The CLI path above can perform the initial deployment with secrets before you connect automated builds.
+Under **Build Variables and Secrets**, set:
+
+```dotenv
+BUN_VERSION=1.4.0
+NODE_VERSION=24.12.0
+SKIP_DEPENDENCY_INSTALL=true
+```
+
+The build command explicitly installs the versions in `bun.lock`, checks types, runs Vitest, and builds Astro. Cloudflare publishes only after those steps pass. Enable non-production branch builds to produce previews for pull requests.
+
+Commit and push the source and `bun.lock` before enabling Git-connected builds. Set the two email secrets on the Worker under **Settings → Variables and Secrets**; build variables are separate from runtime settings. The CLI path above can perform the initial deployment with secrets before you connect automated builds.
 
 ## Official references
 
 - [Astro on Cloudflare Workers](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
 - [Cloudflare Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/)
+- [Workers Builds configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/)
+- [Workers build tools and version overrides](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/)
